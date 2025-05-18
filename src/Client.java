@@ -9,7 +9,7 @@ import java.util.concurrent.*;
 import java.util.Objects;
 
 public class Client {
-    private static final String TRUSTED_SERVER_FINGERPRINT = "g9hBh4q27HxEBufIx/x+aPkUWsgRzlHWMvLAjV5O2+A=";
+    private static final String TRUSTED_SERVER_FINGERPRINT = "y2U0TsNroEf+M7mlIF8MofyE439EuwCBL9yUKM503ZQ=";
     private static final String SERVER_HOST = "localhost";
     private static final int SERVER_PORT = 1234;
     private static volatile boolean running = true;
