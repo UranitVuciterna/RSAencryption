@@ -2,12 +2,13 @@
 /target/    # Maven/Gradle build directory
 /build/     # Gradle alternative
 /bin/       # Eclipse/ANT outputs
+/out/
 *.class     # Compiled classes
 *.jar       # Generated JARs
 *.war       # Web archives (if applicable)
 
 # --- IDE & Editor Files ---
-.idea/      # IntelliJ
+/.idea/      # IntelliJ
 *.iml       # IntelliJ module
 .vscode/    # VS Code
 *.ipr       # IntelliJ project
@@ -39,3 +40,4 @@ logs/            # Log directory
 # --- Test Outputs ---
 /test-output/    # Test reports
 /tmp/            # Temporary files
+/.idea/
