@@ -1,5 +1,3 @@
-package utilities;
-
 import utilities.KeyConverter;
 import utilities.RSAEncryption;
 import utilities.RSAKeyUtil;
@@ -18,14 +16,20 @@ public class Client {
 
     public static void main(String[] args) {
         try {
+            // Generate client key pair
             KeyPair keyPair = RSAKeyUtil.generateKeyPair();
+
+            // Establish connection
             Socket socket = new Socket(SERVER_HOST, SERVER_PORT);
             socket.setSoTimeout(30000); // 5-second timeout for reads
 
+            // Initialize streams
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
 
+            // ========== KEY EXCHANGE WITH VERIFICATION ==========
+            // 1. Receive server's public key and fingerprint
             PublicKey serverKey = KeyConverter.stringToPublicKey(in.readLine());
             String serverFingerprint = in.readLine();
 
@@ -39,12 +43,21 @@ public class Client {
                         serverFingerprint
                 ));
             }
+
+
+
+
+
             out.println(KeyConverter.keyToString(keyPair.getPublic()));
             out.println(KeyConverter.getFingerprint(keyPair.getPublic()));
 
+            // 4. Receive assigned name
             String clientName = in.readLine();
             System.out.println("\nConnected as: " + clientName);
             System.out.println("Secure channel established. You may begin messaging.");
+
+            // ========== MESSAGE PROCESSING ==========
+            // Start message receiver thread
             ExecutorService executor = Executors.newSingleThreadExecutor();
             executor.submit(() -> {
                 try {
@@ -66,6 +79,8 @@ public class Client {
                     }
                 }
             });
+
+            // Message sender loop
             while (running) {
                 try {
                     System.out.print("Your message: ");
