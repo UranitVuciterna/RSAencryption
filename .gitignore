@@ -1,29 +1,41 @@
-### IntelliJ IDEA ###
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+# --- Build Outputs ---
+/target/    # Maven/Gradle build directory
+/build/     # Gradle alternative
+/bin/       # Eclipse/ANT outputs
+*.class     # Compiled classes
+*.jar       # Generated JARs
+*.war       # Web archives (if applicable)
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+# --- IDE & Editor Files ---
+.idea/      # IntelliJ
+*.iml       # IntelliJ module
+.vscode/    # VS Code
+*.ipr       # IntelliJ project
+*.iws       # IntelliJ workspace
+.settings/  # Eclipse
+.project    # Eclipse
+.classpath  # Eclipse
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# --- Dependency Management ---
+**/dependencies/  # Local libs (if not using Maven/Gradle)
+**/lib/           # Alternative local libs
 
-### VS Code ###
-.vscode/
+# --- Sensitive Files ---
+**/keystore.jks   # Java KeyStore
+**/*.ser         # Serialized keys
+**/config.properties  # Configuration with secrets
+.env             # Environment variables
+*.p12            # PKCS12 key files
+*.key            # Private keys
+*.cert           # Certificates
 
-### Mac OS ###
-.DS_Store
+# --- System & Temp Files ---
+.DS_Store        # macOS
+Thumbs.db        # Windows
+*.swp            # Vim swap files
+*.log            # Log files
+logs/            # Log directory
+
+# --- Test Outputs ---
+/test-output/    # Test reports
+/tmp/            # Temporary files
